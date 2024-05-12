@@ -1,0 +1,15 @@
+﻿@page
+@using AspNetLabBook.Model
+@model AspNetLabBook.Pages.BooksModel
+@{
+}
+
+<div>
+    @foreach (Book book in Model.BookOutputSave.GetBooks())
+    {
+        <a asp-page="/BooksInfo" asp-route-title="@book.Title" asp-route-author="@book.AuthorName" asp-route-genre="@book.Genre" asp-route-year="@book.ReleaseYear" asp-route-publisher="@book.Publisher">
+            @book.Title
+        </a>
+        <br />
+    }
+</div>

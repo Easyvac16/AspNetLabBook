@@ -1,0 +1,13 @@
+﻿@page "{title}/{genre}/{author}/{year:int}/{publisher}"
+@model AspNetLabBook.Pages.BooksInfoModel
+@{
+}
+<div>
+    <h2>@RouteData.Values["title"]</h2>
+    <p>Author: @RouteData.Values["author"]</p>
+    <p>Genre: @RouteData.Values["genre"]</p>
+    <p>Publisher: @RouteData.Values["publisher"]</p>
+    <p>Release Year: @RouteData.Values["year"]</p>
+</div>
+
+<a asp-page="/Books" class="text-right">Go back</a>
