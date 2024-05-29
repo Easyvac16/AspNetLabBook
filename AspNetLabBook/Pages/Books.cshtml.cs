@@ -11,6 +11,9 @@ namespace AspNetLabBook.Pages
     {
         public IBookOutputSaveService BookOutputSave;
 
+        [BindProperty]
+        public Book Book { get; set; } = new Book();
+
         public override void OnPageHandlerSelected(PageHandlerSelectedContext context)
         {
             BookOutputSave = new BookOutputSaveService();
@@ -22,6 +25,17 @@ namespace AspNetLabBook.Pages
                 BookOutputSave.AddBook(new Book("Bonney Betty Belle", "Close the Door on the Way Out", "Comedy", "Practicality", 2008));
                 BookOutputSave.AddBook(new Book("Prosketti Marcippio", "Swords Crossed", "Romance", "Practicality", 2005));
             }
+        }
+        [HttpPost]
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            BookOutputSave.AddBook(new Book(Book.Title, Book.AuthorName, Book.Genre, Book.Publisher, Book.ReleaseYear));
+            return RedirectToPage();
         }
         public void OnGet()
         {

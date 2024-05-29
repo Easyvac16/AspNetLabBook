@@ -12,4 +12,148 @@
         </a>
         <br />
     }
+    <button class="share-btn">Add book</button>
+    <dialog class="book-add-dialog">
+        <form method="post">
+            <header>
+                <h2>Add book</h2>
+                <button class="close-btn secndary" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24"
+                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+            </header>
+            <div class="book-add-dialog__content">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="Title" value="@Model.Book.Title" required/>
+
+                <label for="author">Author</label>
+                <input type="text" id="author" name="AuthorName" value="@Model.Book.AuthorName" required />
+
+                <label for="genre">Genre</label>
+                <input type="text" id="genre" name="Genre" value="@Model.Book.Genre" required />
+
+                <label for="releaseYear">Release Year</label>
+                <input type="number" id="releaseYear" name="ReleaseYear" value="@Model.Book.ReleaseYear" required />
+
+                <label for="publisher">Publisher</label>
+                <input type="text" id="publisher" name="Publisher" value="@Model.Book.Publisher" required />
+
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </dialog>
 </div>
+<script>
+
+    const modalDialog = document.querySelector(".book-add-dialog");
+    const shareBtn = document.querySelector(".share-btn");
+    const closeBtn = document.querySelector(".close-btn");
+
+
+
+
+    shareBtn.addEventListener("click", () => {
+        modalDialog.classList.remove("book-add-dialog--fadeout");
+        modalDialog.showModal();
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modalDialog.classList.add("book-add-dialog--fadeout");
+
+        modalDialog.close();
+    });
+
+
+</script>
+
+<style>
+    body {
+        font-family: 'Mulish', sans-serif;
+        background: var(--background);
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 1rem;
+    }
+
+    .share-btn {
+        border-radius: 50%;
+        appearance: none;
+        padding: 1rem;
+        color: var(--primary);
+        outline: none;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 6px;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        background: var(--white);
+        border: none;
+    }
+
+        .share-btn:hover {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 6px 12px;
+        }
+
+        .share-btn svg {
+            stroke: var(--primary);
+        }
+
+    .close-btn {
+        background: inherit;
+        cursor: pointer;
+        border: none;
+    }
+
+        .close-btn svg {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+    .book-add-dialog {
+        border-radius: 0.75rem;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        max-width: 36rem;
+        margin: 0 auto;
+        width: 100%;
+        margin-top: 4rem;
+        border: none;
+    }
+
+        .book-add-dialog header {
+            display: flex;
+            min-height: 4rem;
+            padding: 1.5rem 2rem 0.75rem 2rem;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+            .book-add-dialog header h2 {
+                font-size: 1.5rem;
+                color: var(--headline);
+            }
+
+    .book-add-dialog__content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .book-add-dialog h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+    }
+
+    .book-add-dialog input {
+        margin-bottom: 15px;
+    }
+</style>

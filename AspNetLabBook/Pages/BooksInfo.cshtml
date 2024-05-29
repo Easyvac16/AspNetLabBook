@@ -3,11 +3,46 @@
 @{
 }
 <div>
-    <h2>@RouteData.Values["title"]</h2>
-    <p>Author: @RouteData.Values["author"]</p>
-    <p>Genre: @RouteData.Values["genre"]</p>
-    <p>Publisher: @RouteData.Values["publisher"]</p>
-    <p>Release Year: @RouteData.Values["year"]</p>
+    <h2>@Model.Book.Title</h2>
+    <p>Genre: @Model.Book.Genre</p>
+    <p>Author: @Model.Book.AuthorName</p>
+    <p>Publisher: @Model.Book.Publisher</p>
+    <p>Release Year: @Model.Book.ReleaseYear</p>
+</div>
+
+<form method="post" asp-page-handler="Delete">
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Ви впевнені, що хочете видалити цю книгу?');">Delete Book</button>
+</form>
+
+<button id="btnEdit" onclick="ShowForm()">Edit</button>
+<div id="editForm" style="display: none">
+    <form method="post">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="BookToUpdate.Title" value="@Model.Book.Title" />
+
+        <label for="author">Author</label>
+        <input type="text" id="author" name="BookToUpdate.AuthorName" value="@Model.Book.AuthorName" />
+
+        <label for="genre">Genre</label>
+        <input type="text" id="genre" name="BookToUpdate.Genre" value="@Model.Book.Genre" />
+        
+        <label for="releaseYear">Release Year</label>
+        <input type="number" id="releaseYear" name="BookToUpdate.ReleaseYear" value="@Model.Book.ReleaseYear" />
+
+        <label for="publisher">Publisher</label>
+        <input type="text" id="publisher" name="BookToUpdate.Publisher" value="@Model.Book.Publisher" />
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
 </div>
 
 <a asp-page="/Books" class="text-right">Go back</a>
+
+<script>
+    const btnEdit = document.getElementById("btnEdit");
+    const formEdit = document.getElementById("editForm");
+
+    function ShowForm() {
+        formEdit.style.display = "block";
+    }
+</script>

@@ -1,9 +1,30 @@
 [
   {
-    "AuthorName": "Json1",
-    "Title": "Title",
-    "Genre": "Json2",
-    "Publisher": "Json3",
-    "ReleaseYear": 1488
+    "AuthorName": "Sir Lawrance Hedgecliff",
+    "Title": "Martyr of the Stray Dogs",
+    "Genre": "Mystery",
+    "Publisher": "Gloverb",
+    "ReleaseYear": 1978
+  },
+  {
+    "AuthorName": "Bonney Betty Belle",
+    "Title": "Close the Door on the Way Out",
+    "Genre": "Comedy",
+    "Publisher": "Practicality",
+    "ReleaseYear": 2008
+  },
+  {
+    "AuthorName": "Prosketti Marcippio",
+    "Title": "Swords Crossed",
+    "Genre": "Romance",
+    "Publisher": "Practicality",
+    "ReleaseYear": 2005
+  },
+  {
+    "AuthorName": "Swords Crossed",
+    "Title": "Romance",
+    "Genre": "Prosketti Marcippio",
+    "Publisher": "Practicality",
+    "ReleaseYear": 2006
   }
 ]

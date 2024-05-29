@@ -13,6 +13,16 @@ namespace AspNetLabBook.Service
             _books = ReadFromJsonFile("books.json");
         }
 
+        public Book FindBook(Book bookToFind)
+        {
+            return _books.FirstOrDefault(f =>
+                f.AuthorName == bookToFind.AuthorName &&
+                f.Title == bookToFind.Title &&
+                f.Genre == bookToFind.Genre &&
+                f.Publisher == bookToFind.Publisher &&
+                f.ReleaseYear == bookToFind.ReleaseYear);
+        }
+
         public List<Book> ReadFromJsonFile(string filePath)
         {
             try
@@ -46,9 +56,29 @@ namespace AspNetLabBook.Service
             File.WriteAllText(filePath, updatedJson);
 
         }
-        public void RemoveBook(string filePath)
+        
+        public void WriteToJsonFile(List<Book> books, string filePath)
         {
-            Console.WriteLine("LVA");
+            string updatedJson = JsonConvert.SerializeObject(books, Formatting.Indented);
+            File.WriteAllText(filePath, updatedJson);
+        }
+        public void DeleteBookFromJSON(Book book)
+        {
+            _books.RemoveAll(f =>
+                f.AuthorName == book.AuthorName &&
+                f.Title == book.Title &&
+                f.Genre == book.Genre &&
+                f.Publisher == book.Publisher &&
+                f.ReleaseYear == book.ReleaseYear);
+
+            WriteToJsonFile(_books, "books.json");
+        }
+
+        public void UpdateBook(Book book, Book BookToUpdate)
+        {
+            DeleteBookFromJSON(book);
+
+            WriteToJsonFile(BookToUpdate, "books.json");
         }
 
         public List<Book> GetBooks() => _books;
